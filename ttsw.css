@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+	--bg_gradient: linear-gradient(to bottom right, #00c6ff, #0072ff);
+	--bg: #02a4fd;
+	--primary: white;
+	--secondary: #fff9;
+	--invert_bg: white;
+	--invert_primary: #333;
+	--invert_secondary: #3335;
+	--link_hover_color: #2efff8;
+
+	--radius: 5px;
+	--button_radius: 2px;
+}
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: var(--primary);
+}
+
+a:hover {
+	color: var(--link_hover_color);
+}
+
+body {
+	text-align: center;
+	font-family: 'Rubik', sans-serif;
+	padding: 10px;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	min-height: 100vh;
+}
+
+
+
+/* Layout */
+.adaptive {
+	width: 1200px;
+	height: 100%;
+	margin: auto;
+	display: grid;
+	grid-template-columns: 1fr 350px;
+	grid-template-rows: 100px 1fr;
+	grid-auto-rows: 50px;
+	gap: 10px;
+}
+
+.adaptive>* {
+	padding: 10px;
+	color: var(--primary);
+	background: var(--bg_gradient);
+}
+
+/* Header */
+.header {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 14px;
+	grid-column: span 2;
+}
+
+.header .logo {
+	padding: 6px 20px;
+	text-transform: uppercase;
+	font-weight: 500;
+	border-radius: var(--button_radius);
+	background: var(--primary);
+	color: var(--bg);
+
+}
+.header .logo:hover{
+	background-color: red;
+}
+
+
+.header .menu {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	font-size: 16px;
+	font-weight: 300;
+}
+
+.header .phone {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 15px;
+	letter-spacing: -1px;
+}
+
+.header .phone i {
+	font-size: 12px;
+}
+
+.header .mobile-menu {
+	display: none;
+	font-size: 30px;
+}
+
+/* Sidebar */
+.sidebal__title {
+	text-transform: uppercase;
+	font-size: 18px;
+	font-weight: 500;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+.subscribe {
+	display: grid;
+	grid-template-columns: 1.5fr 1fr;
+	grid-auto-rows: 40px;
+	gap: 5px;
+}
+
+.subscribe input,
+.subscribe button {
+	padding: 5px;
+	font-size: 16px;
+	width: 100%;
+	border: none;
+	border-radius: 3px;
+}
+
+.subscribe button {
+	background: var(--primary);
+}
+
+/* Post */
+.posts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.post {
+	display: grid;
+	background: var(--primary);
+	color: var(--invert_primary);
+	border-radius: var(--radius);
+	overflow: hidden;
+	padding: 5px 5px 15px;
+}
+
+.post__img {
+	height: 240px;
+	margin-bottom: 10px;
+	border-radius: var(--radius);
+	background: var(--invert_primary) var(--img) center / cover;
+}
+
+.post__content {
+	padding: 0 10px;
+	text-align: left;
+}
+
+.post__title {
+	font-size: 24px;
+	font-weight: 500;
+	margin-bottom: 5px;
+	color: var(--invert_primary);
+}
+
+.post__desc {
+	font-weight: 300;
+}
+
+@media (max-width: 1200px) {
+	.adaptive {
+		width: 1000px;
+		grid-template-columns: 1fr 300px;
+	}
+
+	.post {
+		grid-template-columns: 1fr 2fr;
+		padding-bottom: 5px;
+		min-height: 150px;
+	}
+
+	.post__img {
+		height: 100%;
+	}
+
+	.post__title {
+		font-size: 22px;
+	}
+}
+
+@media (max-width: 1000px) {
+	.adaptive {
+		width: 768px;
+	}
+
+	.post {
+		grid-template-columns: 1fr;
+		padding-bottom: 15px;
+		min-height: 150px;
+	}
+
+	.post__img {
+		height: 20vw;
+	}
+
+	.post__title {
+		font-size: 22px;
+	}
+}
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 4.5vw;
+	}
+
+	.adaptive {
+		width: 480px;
+		grid-template-columns: 1fr;
+		grid-template-rows: 70px 1fr auto;
+	}
+
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+		border-bottom: 1px solid white;
+		grid-column: 1;
+	}
+
+	.header .menu {
+		display: none;
+	}
+
+	.header .mobile-menu {
+		display: block;
+	}
+
+	.posts {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.post__title {
+		font-size: 18px;
+	}
+
+	.post__desc {
+		font-size: 15px;
+	}
+
+	.post__img {
+		height: 25vw;
+	}
+}
+
+@media (max-width: 480px) {
+	.adaptive {
+		width: 100%;
+		grid-template-rows: 50px 1fr auto;
+	}
+
+	.posts {
+		grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+	}
+
+	.post__desc {
+		font-size: 14px;
+	}
+
+	.post__img {
+		height: 35vw;
+	}
+}
+
+.footer {
+	border: 1px solid black;
+}
+
+
+.button {
+	position: relative;
+	font-size: 1.2rem;
+	color: var(--color);
+	border-radius: 4px;
+	text-shadow: 0 0 15px var(--color);
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	transition: 0.5s;
+	z-index: 1;
+}
+
+.button:hover {
+	color: #fff;
+	border: 2px solid rgba(0, 0, 0, 0);
+	box-shadow: 0 0 0px var(--color);
+}
+
+.button::before {
+	content: ' ';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color);
+	z-index: -1;
+	transform: scale(0);
+	transition: 0.5s;
+}
+
+.button:hover::before {
+	transform: scale(1);
+	transition-delay: 0.5s;
+	box-shadow: 0 0 10px var(--color),
+		0 0 30px var(--color),
+		0 0 60px var(--color);
+}
+
+
+
+
+	
+		input[type="radio"] {
+			display: none;
+		}
+	
+		label {
+			text-align: center;
+			background: #ffffff;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+			color: #222222;
+			padding: 0.5%;
+			margin: 0.5%;
+			margin-bottom: 30px;
+			cursor: pointer;
+		}
+
+
+					
+			
+						input[type="radio"][id="Cars"]:checked~.posts .Abstraction,
+						input[type="radio"][id="Cars"]:checked~.posts .Plants
+						 {
+							width: 0;
+							height: 0;
+							padding: 0;
+							margin: 0;
+							opacity: 0;
+						}
+			
+					
+			
+						input[type="radio"][id="Abstraction"]:checked~.posts .Cars,
+						input[type="radio"][id="Abstraction"]:checked~.posts .Plants 
+						{
+							width: 0;
+							height: 0;
+							padding: 0;
+							margin: 0;
+							opacity: 0;
+						}
+			
+					
+			
+						input[type="radio"][id="Plants"]:checked~ .posts .Cars,
+						input[type="radio"][id="Plants"]:checked~ .posts .Abstraction {
+							width: 0;
+							height: 0;
+							padding: 0;
+							margin: 0;
+							opacity: 0;
+						}
+	
+		input[type="radio"][id="Cars"]:checked+label {
+			background: #6666ff;
+		}
+	
+	
+	
+		input[type="radio"][id="Abstraction"]:checked+label {
+			background: #ff4466;
+		}
+	
+	
+	
+		input[type="radio"][id="Plants"]:checked+label {
+			background: #66dd99;
+		}
+	
+
+	
+	
+	
